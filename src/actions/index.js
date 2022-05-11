@@ -25,5 +25,14 @@ export const populateAccounts = accounts => {
     }
 }
 
+export const removeAccount = (id) => {
+    return {
+        type: 'REMOVE',
+        payload: {
+            id
+        }
+    }
+}
+
 
 
