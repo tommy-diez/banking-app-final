@@ -16,5 +16,14 @@ export const withdrawal = (_id, amt) => {
     }
 }
 
+export const populateAccounts = accounts => {
+    return {
+        type: 'POPULATE',
+        payload: {
+            accounts
+        }
+    }
+}
+
 
 
