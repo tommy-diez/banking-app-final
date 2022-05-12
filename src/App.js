@@ -8,6 +8,7 @@ import Navbar from './Navbar'
 import {populateAccounts} from "./actions";
 import Accounts from './Accounts'
 import AccountDetails from "./AccountDetails";
+import AddAccount from "./AddAccount";
 
 const PATH =  "https://my-json-server.typicode.com/bnissen24/project2DB";
 
@@ -41,6 +42,7 @@ class App extends React.Component {
                     <Routes>
                         <Route path="/" exact element={<Accounts />} />
                         <Route path="/account/:id" element={<Wrapper />} />
+                        <Route path="add_account" element={<AddAccount />} />
                     </Routes>
                 </BrowserRouter>
             </div>

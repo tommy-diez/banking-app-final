@@ -33,13 +33,21 @@ const accountReducer = (state = DEFAULT_STATE, action) => {
         case 'POPULATE':
             return action.payload;
         case 'REMOVE':
-                console.log(action.payload.id)
-                let deleteIndex = state.accounts.findIndex(account => {
-                    return account._id === action.payload.id;
-                })
-                console.log(deleteIndex)
-                state.accounts.splice(deleteIndex, 1);
-                return getAccounts(state)
+            console.log(action.payload.id)
+            let deleteIndex = state.accounts.findIndex(account => {
+                return account._id === action.payload.id;
+            })
+            console.log(deleteIndex)
+            state.accounts.splice(deleteIndex, 1);
+            return getAccounts(state)
+        case 'ADD':
+            let accountName = action.payload;
+            let accountBalance = action.payload.accountBalance;
+            accountName.name = action.payload.name;
+            accountName._id = state.accounts.length + 1;
+            accountName.balance = accountBalance;
+            state.accounts.push(accountName)
+            return getAccounts(state)
         default :
             return state
     }

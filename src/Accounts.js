@@ -11,7 +11,7 @@ class Accounts extends React.Component {
 
     generateCard = (account) => {
         return (
-            <div className="card">
+            <div className="card col-xs-12 col-sm-12 col-md-6 col-lg-3 text-center">
                 <div className="card-body">
                     <Link to={`account/${account._id}`}>
                         <h5 className="card-title">{account.name}</h5>
@@ -25,7 +25,7 @@ class Accounts extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className="container-fluid">
                 <h1>Accounts</h1>
                     <div className="row">
                         {this.props.accounts.map(account => this.generateCard(account))}

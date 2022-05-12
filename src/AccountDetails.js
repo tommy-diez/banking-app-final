@@ -24,6 +24,7 @@ class AccountDetails extends React.Component {
                     <h5 className="card-title">{account.name}</h5>
                     <h6 className="card-text">Balance: {account.balance}</h6>
                     <input onChange={this.handleChange} className="form-control mr-sm-2" type="text" />
+                    <p>Enter an amount above to make a deposit or withdrawal</p>
                     <button onClick={()=>{this.props.deposit(account._id, parseFloat(this.state.amt))}} className="btn btn-outline-dark">Deposit</button>
                     <button onClick={()=>{this.props.withdrawal(account._id, parseFloat(this.state.amt))}} className="btn btn-outline-primary">Withdraw</button>
                     <br />

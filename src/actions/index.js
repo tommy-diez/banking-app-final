@@ -34,5 +34,13 @@ export const removeAccount = (id) => {
     }
 }
 
+export const addAccount = (accountName, accountBalance) => {
+    return {
+        type: 'ADD',
+        payload: {
+            accountName, accountBalance
+        }
+    }
+}
 
 
