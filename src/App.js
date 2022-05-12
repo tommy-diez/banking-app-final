@@ -2,10 +2,12 @@ import React from 'react';
 import {BrowserRouter, Routes, Route} from "react-router-dom";
 import axios from 'axios';
 import {connect} from 'react-redux';
+import {useParams} from 'react-router-dom';
 
 import Navbar from './Navbar'
 import {populateAccounts} from "./actions";
 import Accounts from './Accounts'
+import AccountDetails from "./AccountDetails";
 
 const PATH =  "https://my-json-server.typicode.com/bnissen24/project2DB";
 
@@ -28,12 +30,17 @@ class App extends React.Component {
     }
 
     render() {
+        const Wrapper = (props) => {
+            const params = useParams();
+            return <AccountDetails  {...{...props, match: {params}} } />
+        }
         return (
             <div className="container">
                 <BrowserRouter>
                     <Navbar/>
                     <Routes>
-                        <Route path="/" exact element=<Accounts /> />
+                        <Route path="/" exact element={<Accounts />} />
+                        <Route path="/account/:id" element={<Wrapper />} />
                     </Routes>
                 </BrowserRouter>
             </div>

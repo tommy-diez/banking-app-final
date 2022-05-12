@@ -1,9 +1,11 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import {Link} from 'react-router-dom'
 
 import { deposit } from './actions'
 import { withdrawal } from './actions'
 import { removeAccount } from './actions'
+import AccountDetails from './AccountDetails'
 
 class Accounts extends React.Component {
 
@@ -11,11 +13,10 @@ class Accounts extends React.Component {
         return (
             <div className="card">
                 <div className="card-body">
-                    <h5 className="card-title">{account.name}</h5>
+                    <Link to={`account/${account._id}`}>
+                        <h5 className="card-title">{account.name}</h5>
+                    </Link>
                     <h6 className="card-text">Balance: {account.balance}</h6>
-                    <button onClick={()=>{this.props.deposit(account._id, 100)}} className="btn btn-outline-dark">Deposit</button>
-                    <button onClick={()=>{this.props.withdrawal(account._id, 100)}} className="btn btn-outline-primary">Withdraw</button>
-                    <button onClick={()=>{this.props.removeAccount(account._id)}} className="btn btn-outline-danger">Delete</button>
                 </div>
             </div>
         )
