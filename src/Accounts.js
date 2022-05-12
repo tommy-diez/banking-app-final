@@ -17,6 +17,7 @@ class Accounts extends React.Component {
                         <h5 className="card-title">{account.name}</h5>
                     </Link>
                     <h6 className="card-text">Balance: {account.balance}</h6>
+                    <button onClick={()=>{this.props.removeAccount(account._id)}} className="btn btn-outline-danger">Delete</button>
                 </div>
             </div>
         )

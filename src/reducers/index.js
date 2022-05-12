@@ -33,8 +33,9 @@ const accountReducer = (state = DEFAULT_STATE, action) => {
         case 'POPULATE':
             return action.payload;
         case 'REMOVE':
+                console.log(action.payload.id)
                 let deleteIndex = state.accounts.findIndex(account => {
-                    return account._id = action.payload.id;
+                    return account._id === action.payload.id;
                 })
                 console.log(deleteIndex)
                 state.accounts.splice(deleteIndex, 1);

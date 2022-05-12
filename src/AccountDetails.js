@@ -5,11 +5,16 @@ import {useParams} from 'react-router-dom'
 import { deposit } from './actions'
 import { withdrawal } from './actions'
 import { removeAccount } from './actions'
+import { useNavigate } from 'react-router-dom'
 
 class AccountDetails extends React.Component {
 
     constructor(props) {
         super(props)
+    }
+
+    handleChange = (event) => {
+        this.setState({amt: event.target.value})
     }
 
     generateCard = (account) => {
@@ -18,9 +23,10 @@ class AccountDetails extends React.Component {
                 <div className="card-body">
                     <h5 className="card-title">{account.name}</h5>
                     <h6 className="card-text">Balance: {account.balance}</h6>
-                    <button onClick={()=>{this.props.deposit(account._id, 100)}} className="btn btn-outline-dark">Deposit</button>
-                    <button onClick={()=>{this.props.withdrawal(account._id, 100)}} className="btn btn-outline-primary">Withdraw</button>
-                    <button onClick={()=>{this.props.removeAccount(account._id)}} className="btn btn-outline-danger">Delete</button>
+                    <input onChange={this.handleChange} className="form-control mr-sm-2" type="text" />
+                    <button onClick={()=>{this.props.deposit(account._id, parseFloat(this.state.amt))}} className="btn btn-outline-dark">Deposit</button>
+                    <button onClick={()=>{this.props.withdrawal(account._id, parseFloat(this.state.amt))}} className="btn btn-outline-primary">Withdraw</button>
+                    <br />
                 </div>
             </div>
         )
